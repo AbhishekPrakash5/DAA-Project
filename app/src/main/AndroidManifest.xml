@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DsActivity"
-            android:label="Ds" />
+            android:label="Data Structures" />
         <activity android:name=".AlgorithmActivity"
-            android:label="Algo" />
+            android:label="Algorithms" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

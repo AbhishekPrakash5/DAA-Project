@@ -1,9 +1,14 @@
 package com.example.daaproject;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,26 +23,36 @@ public class DsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topic_list);
 
-        ArrayList<String> topics = new ArrayList<>();
-        topics.add("Array");
-        topics.add("Linked List");
-        topics.add("Stack");
-        topics.add("Queue");
-        topics.add("Binary Tree");
-        topics.add("Binary Search Tree");
-        topics.add("Heap");
-        topics.add("Array");
-        topics.add("Hashing");
-        topics.add("Graph");
-        topics.add("Array");
-        topics.add("Matrix");
-        topics.add("Strings");
+        final ArrayList<Topic> topics = new ArrayList<>();
+        topics.add(new Topic("Array","https://www.geeksforgeeks.org/array-data-structure/"));
+        topics.add(new Topic("Linked List","https://www.geeksforgeeks.org/data-structures/linked-list/"));
+        topics.add(new Topic("Stack","https://www.geeksforgeeks.org/stack-data-structure/"));
+        topics.add(new Topic("Queue","https://www.geeksforgeeks.org/queue-data-structure/"));
+        topics.add(new Topic("Binary Tree","https://www.geeksforgeeks.org/binary-tree-data-structure/"));
+        topics.add(new Topic("Binary Search Tree","https://www.geeksforgeeks.org/binary-search-tree-data-structure/"));
+        topics.add(new Topic("Heap","https://www.geeksforgeeks.org/heap-data-structure/"));
+        topics.add(new Topic("Hashing","https://www.geeksforgeeks.org/hashing-data-structure/"));
+        topics.add(new Topic("Graph","https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/"));
+        topics.add(new Topic("Advanced Data Structure","https://www.geeksforgeeks.org/advanced-data-structures/"));
+        topics.add(new Topic("Matrix","https://www.geeksforgeeks.org/matrix/"));
+        topics.add(new Topic("Strings","https://www.geeksforgeeks.org/string-data-structure/"));
 
-        ArrayAdapter<String> topicsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, topics);
+        TopicAdapter topicsAdapter = new TopicAdapter(this, topics);
 
         ListView listView = (ListView) findViewById(R.id.list_view);
 
         listView.setAdapter(topicsAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(getApplicationContext(),"thiss is toast",Toast.LENGTH_SHORT).show();
+                Topic topic = topics.get(position);
+                Uri uri = Uri.parse(topic.getLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
     }
 }
