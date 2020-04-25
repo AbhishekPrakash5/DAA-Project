@@ -8,6 +8,6 @@
 <Img src="Images/ds2.jpg" width=200 > <Img src="Images/algo2.jpg" width=200 >
   
 ### Update 3 Progress
--Add UI colors <br/>
+-Added UI colors <br/>
 
-<Img src="Images/ds3.jpg" width=200 > <Img src="Images/algo3.jpg" width=200 >
+<Img src="Images/front3.jpg" width=200 > <Img src="Images/ds3.jpg" width=200 > <Img src="Images/algo3.jpg" width=200 >
